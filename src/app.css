@@ -1,0 +1,263 @@
+/* StudioVesper — design tokens and base styles
+   Palette: strictly black and white, with two greys for secondary text. */
+
+:root {
+  --ink: #0a0a0a;
+  --graphite: #161616;
+  --paper: #f3f3f1;
+  --white: #ffffff;
+  --stone: #676765; /* secondary text on paper: 5.1:1 */
+  --smoke: #a2a2a0; /* secondary text on ink: 7.7:1 */
+
+  --font-sans: 'Mona Sans Variable', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --rail: 0px;
+  --bar: 60px;
+  --gutter: clamp(16px, 2.4vw, 44px);
+  --section-pad: clamp(112px, 13vw, 232px);
+
+  --fs-label: 11.5px;
+  --fs-body: clamp(16px, 0.3vw + 14.6px, 19px);
+  --fs-lead: clamp(19px, 0.7vw + 14.5px, 26px);
+  --fs-h3: clamp(28px, 2.7vw, 48px);
+  --fs-display: clamp(50px, 7.2vw, 146px);
+  --fs-hero: clamp(64px, 8.4vw, 170px);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  color-scheme: dark light;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --rail: clamp(184px, 14vw, 240px);
+    --bar: 0px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--ink);
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  font-weight: 420;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ol,
+ul,
+figure,
+fieldset,
+legend {
+  margin: 0;
+  padding: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.theme-light ::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+[tabindex='-1']:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ---------- utilities ---------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 200;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  font-weight: 600;
+  transform: translateY(-160%);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.skip-link:focus-visible {
+  transform: none;
+  outline-color: var(--ink);
+}
+
+/* Utility face: small uppercase labels in Geist Mono, the studio's secondary voice. */
+.mono,
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 450;
+  line-height: 1.45;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+
+.label {
+  color: var(--muted);
+}
+
+.display {
+  font-size: var(--fs-display);
+  font-weight: 540;
+  font-stretch: 92%;
+  line-height: 0.9;
+  letter-spacing: -0.052em;
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.32;
+  letter-spacing: -0.012em;
+  font-weight: 450;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* SplitText masks: give ascenders and descenders room without shifting layout */
+.line-mask,
+.char-mask {
+  padding: 0.08em 0 0.16em;
+  margin: -0.08em 0 -0.16em;
+}
+
+/* ---------- section scaffolding ---------- */
+
+.theme-dark {
+  --bg: var(--ink);
+  --fg: var(--paper);
+  --muted: var(--smoke);
+  --line: rgb(243 243 241 / 0.16);
+  --raised: var(--graphite);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.theme-light {
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --muted: var(--stone);
+  --line: rgb(10 10 10 / 0.14);
+  --raised: #e8e8e6;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.section {
+  position: relative;
+  padding: var(--section-pad) 0;
+  scroll-margin-top: var(--bar);
+}
+
+.section__inner {
+  margin-left: var(--rail);
+  padding: 0 var(--gutter);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+
+/* Hidden until the intro timeline runs; the failsafe shows it if scripts stall. */
+html.js [data-intro] {
+  visibility: hidden;
+  animation: intro-failsafe 0s linear 3.2s forwards;
+}
+
+@keyframes intro-failsafe {
+  to {
+    visibility: visible;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-intro] {
+    visibility: visible;
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
