@@ -560,18 +560,18 @@
       grid-template-rows: auto auto;
       align-content: center;
       row-gap: clamp(26px, 4.5svh, 44px);
+
     }
 
     .hero__copy {
       text-align: center;
     }
 
+    /* Centre with text-align, not flex: SplitText wraps every word in an element to find the
+       lines, and in a flex column each of those becomes its own row — one word per line. */
     .hero__title {
       font-size: min(16.4vw, 92px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      text-align: center;
     }
 
     .hero__lede {
