@@ -360,12 +360,9 @@
     line-height: 0.86;
     letter-spacing: -0.056em;
     color: var(--paper);
-    text-align: center;
+    text-align: start;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: block;
   }
 
   .hero__lede {
@@ -571,6 +568,10 @@
 
     .hero__title {
       font-size: min(16.4vw, 92px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 
     .hero__lede {
