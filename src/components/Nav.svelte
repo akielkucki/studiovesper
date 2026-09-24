@@ -99,7 +99,7 @@
 
 <!-- Desktop: fixed rail on the left. Blend mode keeps it legible over dark and light sections alike. -->
 <header class="rail">
-  <a class="rail__brand" href="#intro" aria-label="StudioVesper, back to top">
+  <a class="rail__brand" href="#intro" aria-label="mainstreetlander, back to top">
     <Logo />
   </a>
 
@@ -122,7 +122,7 @@
 
 <!-- Mobile and tablet: a compact bar along the top with thumb-sized targets. -->
 <header class="bar" data-bar-theme={ui.barTheme}>
-  <a class="bar__brand" href="#intro" aria-label="StudioVesper, back to top">
+  <a class="bar__brand" href="#intro" aria-label="mainstreetlander, back to top">
     <Logo mark />
   </a>
   <nav class="bar__nav" aria-label="Sections" bind:this={barScroller}>

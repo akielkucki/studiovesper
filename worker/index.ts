@@ -97,7 +97,7 @@ function discordPayload(submission: ContactSubmission) {
   const valueOrDash = (value: string) => value || '—'
 
   return {
-    username: 'Studio Vesper inquiries',
+    username: 'mainstreetlander inquiries',
     allowed_mentions: { parse: [] },
     embeds: [
       {

@@ -11,7 +11,7 @@
   <div class="section__inner">
     <header class="benefits__head">
       <h2 id="benefits-title" class="label">Benefits</h2>
-      <p class="benefits__intro lead" data-reveal="fade">Three things every StudioVesper site is built on.</p>
+      <p class="benefits__intro lead" data-reveal="fade">Three things every mainstreetlander site is built on.</p>
     </header>
 
     {#each benefits as benefit (benefit.id)}

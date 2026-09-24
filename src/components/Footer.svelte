@@ -56,11 +56,11 @@
     </div>
 
     <div class="footer__mark" bind:this={mark}>
-      <span class="footer__word" aria-hidden="true" bind:this={word}>StudioVesper</span>
+      <span class="footer__word" aria-hidden="true" bind:this={word}>mainstreetlander</span>
     </div>
 
     <div class="footer__base mono">
-      <span>© 2026 StudioVesper</span>
+      <span>© 2026 mainstreetlander</span>
       <span>Web design studio</span>
     </div>
   </div>

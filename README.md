@@ -1,6 +1,6 @@
-# StudioVesper
+# mainstreetlander
 
-Site for StudioVesper — web design for local businesses, plus missed-call text back.
+Site for mainstreetlander — web design for local businesses, plus missed-call text back.
 Vite + Svelte 5, GSAP 3.15 (ScrollTrigger, SplitText), Lenis smooth scrolling, and a hand-written WebGL2 water surface in the hero.
 
 ```bash
@@ -21,7 +21,7 @@ npm run deploy
 
 ## Before launch
 
-- **Inbox:** replace `hello@studiovesper.com` in `src/lib/content.js`.
+- **Inbox:** contact inquiries use `hello@mainstreetlander.com` in `src/lib/content.js`.
 - **Inquiry form:** configure `DISCORD_WEBHOOK_URL` as described above. The webhook stays server-side and form submissions are sent through `/api/contact`.
 - **Copy:** every string lives in `src/lib/content.js`, apart from the section headlines inside each component.
   The service details and the Oakline Roofing examples in the benefit illustrations are placeholders — check them against what you actually offer.

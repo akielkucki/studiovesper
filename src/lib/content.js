@@ -88,7 +88,7 @@ export const steps = [
 
 export const inquiry = {
   // Replace with the studio's real inbox before launch.
-  email: 'hello@studiovesper.com',
+  email: 'hello@mainstreetlander.com',
   endpoint: '/api/contact',
   industries: ['Home services', 'Auto', 'Health and beauty', 'Food and hospitality', 'Professional services', 'Something else'],
   needs: ['New website', 'Website redesign', 'Missed-call text back', 'Not sure yet'],

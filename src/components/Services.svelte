@@ -79,7 +79,7 @@
     </header>
 
     <p class="services__statement" data-reveal="words">
-      StudioVesper designs and builds websites for local businesses — then connects missed-call text back, so every
+      mainstreetlander designs and builds websites for local businesses — then connects missed-call text back, so every
       call you can't pick up still gets an answer.
     </p>
 

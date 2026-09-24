@@ -9,7 +9,7 @@
     />
   </svg>
   {#if !mark}
-    <span class="logo__word">StudioVesper</span>
+    <span class="logo__word">mainstreetlander</span>
   {/if}
 </span>
 
