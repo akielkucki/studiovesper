@@ -25,7 +25,8 @@ let lenis = null
 export function initSmoothScroll() {
   if (prefersReducedMotion()) return () => {}
 
-  lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 0.95 })
+  lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 0.95, })
+
   lenis.on('scroll', ScrollTrigger.update)
   const raf = (time) => lenis.raf(time * 1000)
   gsap.ticker.add(raf)
@@ -42,7 +43,8 @@ const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4)
 
 /** Scrolls to a section and moves keyboard focus there once it arrives. */
 export function scrollToElement(target) {
-  const offset = isDesktop() ? 0 : -parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--bar') || 0)
+
+  const offset = isDesktop() ? window.screenY : -parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--bar') || 0)
   const settle = () => {
     if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1')
     target.focus({ preventScroll: true })
