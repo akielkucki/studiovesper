@@ -5,15 +5,24 @@ Vite + Svelte 5, GSAP 3.15 (ScrollTrigger, SplitText), Lenis smooth scrolling, a
 
 ```bash
 npm install
+npm run types    # regenerate Cloudflare binding/runtime types
 npm run dev      # http://localhost:5173
 npm run build    # static output in dist/
+```
+
+For local form submissions, copy `.dev.vars.example` to `.dev.vars` and set `DISCORD_WEBHOOK_URL` to the Discord webhook URL. The local secrets file is ignored by Git.
+
+Before deploying, store the production webhook as an encrypted Cloudflare secret, then deploy:
+
+```bash
+npx wrangler secret put DISCORD_WEBHOOK_URL
+npm run deploy
 ```
 
 ## Before launch
 
 - **Inbox:** replace `hello@studiovesper.com` in `src/lib/content.js`.
-- **Inquiry form:** set `VITE_INQUIRY_ENDPOINT` in a `.env` file to any backend that accepts a JSON `POST`
-  (Formspree, a Cloudflare Worker, your own API). Without it, the form opens a pre-filled email instead.
+- **Inquiry form:** configure `DISCORD_WEBHOOK_URL` as described above. The webhook stays server-side and form submissions are sent through `/api/contact`.
 - **Copy:** every string lives in `src/lib/content.js`, apart from the section headlines inside each component.
   The service details and the Oakline Roofing examples in the benefit illustrations are placeholders — check them against what you actually offer.
 

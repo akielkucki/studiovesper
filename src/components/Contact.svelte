@@ -5,14 +5,13 @@
 
   let form = $state({ name: '', email: '', business: '', industry: '', needs: [], message: '' })
   let errors = $state({})
-  let status = $state('idle') // idle | sending | sent | mailto | error
+  let status = $state('idle') // idle | sending | sent | error
   let formEl = $state()
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
   const statusMessage = $derived(
     {
-      mailto: `Your email app should open with the inquiry filled in. If it doesn't, write to ${inquiry.email}.`,
       error: `The inquiry didn't send. Check your connection and try again, or write to ${inquiry.email}.`,
     }[status] ?? '',
   )
@@ -26,31 +25,11 @@
     return Object.keys(next).length === 0
   }
 
-  function summary() {
-    return [
-      `Name: ${form.name}`,
-      `Email: ${form.email}`,
-      form.business && `Business: ${form.business}`,
-      form.industry && `Industry: ${form.industry}`,
-      form.needs.length > 0 && `Needs: ${form.needs.join(', ')}`,
-      form.message && `\n${form.message}`,
-    ]
-      .filter(Boolean)
-      .join('\n')
-  }
-
   async function submit(event) {
     event.preventDefault()
     if (!validate()) {
       await tick()
       formEl.querySelector('[aria-invalid="true"]')?.focus()
-      return
-    }
-
-    if (!inquiry.endpoint) {
-      const subject = `Project inquiry — ${form.business.trim() || form.name.trim()}`
-      window.location.href = `mailto:${inquiry.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(summary())}`
-      status = 'mailto'
       return
     }
 
@@ -100,6 +79,7 @@
                 name="name"
                 autocomplete="name"
                 required
+                maxlength="100"
                 bind:value={form.name}
                 aria-invalid={errors.name ? 'true' : undefined}
                 aria-describedby={errors.name ? 'f-name-error' : undefined}
@@ -115,6 +95,7 @@
                 autocomplete="email"
                 inputmode="email"
                 required
+                maxlength="254"
                 bind:value={form.email}
                 aria-invalid={errors.email ? 'true' : undefined}
                 aria-describedby={errors.email ? 'f-email-error' : undefined}
@@ -126,7 +107,13 @@
           <div class="form__row">
             <div class="field">
               <label for="f-business">Business name <span class="muted">(optional)</span></label>
-              <input id="f-business" name="business" autocomplete="organization" bind:value={form.business} />
+              <input
+                id="f-business"
+                name="business"
+                autocomplete="organization"
+                maxlength="120"
+                bind:value={form.business}
+              />
             </div>
             <div class="field">
               <label for="f-industry">Industry</label>
@@ -157,6 +144,7 @@
               id="f-message"
               name="message"
               rows="4"
+              maxlength="1000"
               bind:value={form.message}
               placeholder="What you do, where you work, what isn't working today…"
             ></textarea>

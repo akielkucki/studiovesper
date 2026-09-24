@@ -89,9 +89,7 @@ export const steps = [
 export const inquiry = {
   // Replace with the studio's real inbox before launch.
   email: 'hello@studiovesper.com',
-  // Optional: set VITE_INQUIRY_ENDPOINT to a form backend that accepts JSON POSTs.
-  // Without it, the form opens a pre-filled email instead.
-  endpoint: import.meta.env.VITE_INQUIRY_ENDPOINT ?? '',
+  endpoint: '/api/contact',
   industries: ['Home services', 'Auto', 'Health and beauty', 'Food and hospitality', 'Professional services', 'Something else'],
   needs: ['New website', 'Website redesign', 'Missed-call text back', 'Not sure yet'],
 }
